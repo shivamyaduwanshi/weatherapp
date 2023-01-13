@@ -5,14 +5,14 @@ This is a Node.js application that allows you to check the current and forecast 
 ## Installation
 
 - Clone the repository
-  git clone https://github.com/yourusername/weatherapp.git
+  git clone https://github.com/binaryprotagonist/weatherapp.git
 
 - Install the dependencies
   npm install
 
 ## Running the server
 
-- To run the server, use the following command:
+- To run the server, use the following command
   npm run dev
   The application will be running on `http://localhost:8000`
 
