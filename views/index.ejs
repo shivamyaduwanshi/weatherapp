@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="search-form">
+            <div class="form-wrapper">
+                <form role="form" onsubmit="submitForm(event)">
+                    <select name="weather_type" id="weather-type">
+                        <option value="current">Current</option>
+                        <option value="forecast">Forecast</option>
+                    </select>
+                    <input name="place" value="" placeholder="Place" id="place" autocapitalize="off" required />
+                    <button>Search</button>
+                </form>
+                <h2 id="loading"></h2>
+            </div>
+        </div>
+        <div class="main">
+            <div class="json-response-wrapper">
+                <div class="box">
+                    <h2>Old Response</h2>
+                    <pre id="prettyprintold">Not available</pre>
+                </div>
+                <div class="box">
+                    <h2>New Response</h2>
+                    <pre id="prettyprintnew">Not available</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    var baseURl = 'http://localhost:8000/api/weather';
+
+    function submitForm(e) {
+        e.preventDefault();
+        var weatherType = document.getElementById("weather-type").value;
+        var place = document.getElementById("place").value;
+
+        if (place === '') {
+            alert("Please enter place name");
+            return false
+        }
+
+        document.getElementById('loading').innerText = 'Loading...';
+
+        fetch(`${baseURl}/${weatherType}?place=${place}`)
+            .then(response => response.json())
+            .then(response => {
+                const { status } = response;
+                const { newRecord, oldRecord } = response.data;
+                var preOld = document.getElementById("prettyprintold");
+                var preNew = document.getElementById("prettyprintnew");
+                if (status) {
+                    var jsonOld = JSON.stringify(oldRecord, undefined, 2);
+                    var jsonNew = JSON.stringify(newRecord, undefined, 2);
+                    preOld.innerHTML = jsonOld;
+                    preNew.innerHTML = jsonNew;
+                    PR.prettyPrint();
+                } else {
+                    preOld.innerHTML = "Not available";
+                    preNew.innerHTML = "Not available";
+                    PR.prettyPrint();
+                    alert("Record not found");
+                }
+                document.getElementById('loading').innerText = '';
+            }).catch((error) => {
+                document.getElementById('loading').innerText = '';
+                alert("Something went wrong");
+            });
+
+    }
+</script>
+
+</html>
