@@ -10,11 +10,14 @@ This is a Node.js application that allows you to check the current and forecast 
 - Install the dependencies
   npm install
 
+- Here on the development mode using nodemon to also install the nodemon globally
+  npm install -g nodemon
+
 ## Running the server
 
 - To run the server, use the following command
-  npm run dev
-  The application will be running on `http://localhost:8000`
+- npm run dev
+- The application will be running on `http://localhost:8000`
 
 ## Usage
 
