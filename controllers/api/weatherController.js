@@ -23,7 +23,7 @@ export default {
       .then((response) => {
         const data = JSON.parse(JSON.stringify(response.data));
         const mappedKeys = mapResponse(keyResource, data);
-        res.status('200').json({
+        res.status(200).json({
           status: true,
           message: 'success',
           data: { newRecord: mappedKeys, oldRecord: response.data },
@@ -32,7 +32,7 @@ export default {
       })
       .catch((error) => {
         res
-          .status('200')
+          .status(200)
           .json({ status: false, message: 'failed', data: [], error: error });
       });
   },
@@ -51,7 +51,7 @@ export default {
       .then((response) => {
         const data = JSON.parse(JSON.stringify(response.data));
         const mappedKeys = mapResponse(keyResource, data);
-        res.status('200').json({
+        res.status(200).json({
           status: true,
           message: 'success',
           data: { newRecord: mappedKeys, oldRecord: response.data },
@@ -60,7 +60,7 @@ export default {
       })
       .catch((error) => {
         res
-          .status('200')
+          .status(200)
           .json({ status: false, message: 'failed', data: [], error: error });
       });
   },
