@@ -9,25 +9,40 @@
   width: 100%;
 }
 
+.page-title {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+}
+
 .search-form {
-  margin: 20px auto;
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 200px;
+  height: 114px;
 }
 
 .search-form input,
 select,
 button {
-  width: 183px;
+  width: 300px;
   padding: 10px;
+  margin: 0 10px;
+  font-size: 24px;
 }
 
 button {
   color: #fff;
   background: #000;
   cursor: pointer;
+}
+
+#loading {
+  font-size: 34px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .json-response-wrapper {
@@ -46,4 +61,31 @@ button {
 #loading {
   text-align: center;
   margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    height: auto;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  input,
+  select,
+  button {
+    width: 322px;
+  }
+
+  .json-response-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    width: 100%;
+  }
 }

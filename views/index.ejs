@@ -12,6 +12,7 @@
 
 <body>
     <div class="container">
+        <div class="page-title">Weather App</div>
         <div class="search-form">
             <div class="form-wrapper">
                 <form role="form" onsubmit="submitForm(event)">
@@ -22,18 +23,18 @@
                     <input name="place" value="" placeholder="Place" id="place" autocapitalize="off" required />
                     <button>Search</button>
                 </form>
-                <h2 id="loading"></h2>
             </div>
         </div>
+        <div id="loading"></div>
         <div class="main">
             <div class="json-response-wrapper">
                 <div class="box">
                     <h2>Old Response</h2>
-                    <pre id="prettyprintold">Not available</pre>
+                    <pre id="prettyprintold"></pre>
                 </div>
                 <div class="box">
                     <h2>New Response</h2>
-                    <pre id="prettyprintnew">Not available</pre>
+                    <pre id="prettyprintnew"></pre>
                 </div>
             </div>
         </div>
@@ -71,10 +72,9 @@
                     preNew.innerHTML = jsonNew;
                     PR.prettyPrint();
                 } else {
-                    preOld.innerHTML = "Not available";
-                    preNew.innerHTML = "Not available";
+                    preOld.innerHTML = "Place unavailable";
+                    preNew.innerHTML = "Place unavailable";
                     PR.prettyPrint();
-                    alert("Record not found");
                 }
                 document.getElementById('loading').innerText = '';
             }).catch((error) => {

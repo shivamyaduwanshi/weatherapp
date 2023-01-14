@@ -5,7 +5,7 @@ This is a Node.js application that allows you to check the current and forecast 
 ## Installation
 
 - Clone the repository
-  git clone https://github.com/binaryprotagonist/weatherapp.git
+  git clone https://github.com/binaryprotagonist/weather-app-test-task.git
 
 - Install the dependencies
   npm install
