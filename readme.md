@@ -1,4 +1,4 @@
-# Node Weather App
+# Node Weather App Task
 
 This is a Node.js application that allows you to check the current and forecast weather of a specific place.
 
